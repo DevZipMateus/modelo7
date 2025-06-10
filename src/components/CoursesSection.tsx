@@ -1,7 +1,7 @@
-
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Calendar, Clock, Users, BookOpen } from "lucide-react";
+import { openWhatsApp } from "@/utils/whatsapp";
 
 export default function CoursesSection() {
   const courses = [
@@ -38,6 +38,14 @@ export default function CoursesSection() {
       topics: ["Abertura de MEI", "Declaração Anual", "Emissão de Notas", "Direitos e Deveres"]
     }
   ];
+
+  const handleEnrollClick = (courseTitle: string) => {
+    openWhatsApp(`Olá! Gostaria de me inscrever no curso "${courseTitle}" da Impulso Empreendedor. Poderia me dar mais informações?`);
+  };
+
+  const handleCalendarClick = () => {
+    openWhatsApp("Olá! Gostaria de ver o calendário completo de workshops da Impulso Empreendedor.");
+  };
 
   return (
     <section id="courses" className="relative z-10 py-20 px-6">
@@ -92,7 +100,7 @@ export default function CoursesSection() {
                   </div>
                 </div>
 
-                <Button className="w-full bg-gradient-to-r from-cyan-500 to-green-500 hover:from-cyan-600 hover:to-green-600 text-black font-semibold">
+                <Button onClick={() => handleEnrollClick(course.title)} className="w-full bg-gradient-to-r from-cyan-500 to-green-500 hover:from-cyan-600 hover:to-green-600 text-black font-semibold">
                   Inscrever-se
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
@@ -108,7 +116,7 @@ export default function CoursesSection() {
           <p className="text-white/80 mb-6">
             Confira o calendário completo de workshops e garante sua vaga!
           </p>
-          <Button className="bg-gradient-to-r from-cyan-500 to-green-500 hover:from-cyan-600 hover:to-green-600 text-black font-semibold">
+          <Button onClick={handleCalendarClick} className="bg-gradient-to-r from-cyan-500 to-green-500 hover:from-cyan-600 hover:to-green-600 text-black font-semibold">
             Ver Calendário Completo
           </Button>
         </Card>

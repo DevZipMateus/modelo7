@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, TrendingUp, Target, Users } from "lucide-react";
+import { openWhatsApp } from "@/utils/whatsapp";
+
 export default function HeroSection() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -10,6 +12,15 @@ export default function HeroSection() {
       });
     }
   };
+
+  const handleCoursesClick = () => {
+    openWhatsApp("Olá! Gostaria de conhecer os cursos disponíveis na Impulso Empreendedor.");
+  };
+
+  const handleLearnMoreClick = () => {
+    openWhatsApp("Olá! Gostaria de saber mais sobre a Impulso Empreendedor e seus workshops.");
+  };
+
   return <div id="home" className="relative z-10 min-h-screen flex items-center justify-center px-[8px] py-[57px]">
       <div className="max-w-6xl mx-auto text-center space-y-8">
         {/* Floating icons */}
@@ -41,12 +52,12 @@ export default function HeroSection() {
 
         {/* Action buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in">
-          <Button size="lg" onClick={() => scrollToSection('courses')} className="bg-gradient-to-r from-cyan-500 to-green-500 hover:from-cyan-600 hover:to-green-600 text-black font-semibold transition-all duration-300 hover:scale-105">
+          <Button size="lg" onClick={handleCoursesClick} className="bg-gradient-to-r from-cyan-500 to-green-500 hover:from-cyan-600 hover:to-green-600 text-black font-semibold transition-all duration-300 hover:scale-105">
             Conheça Nossos Cursos
             <ArrowRight className="ml-2 w-4 h-4" />
           </Button>
           
-          <Button variant="outline" size="lg" onClick={() => scrollToSection('about')} className="border-cyan-300/30 backdrop-blur-sm transition-all duration-300 text-cyan-100 bg-transparent">
+          <Button variant="outline" size="lg" onClick={handleLearnMoreClick} className="border-cyan-300/30 backdrop-blur-sm transition-all duration-300 text-cyan-100 bg-transparent">
             Saiba Mais
           </Button>
         </div>

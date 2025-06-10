@@ -1,12 +1,10 @@
 
 import { Button } from "@/components/ui/button";
+import { openWhatsApp } from "@/utils/whatsapp";
 
 export default function WhatsAppButton() {
   const handleWhatsAppClick = () => {
-    const phoneNumber = "5555999999999"; // Número no formato internacional
-    const message = "Olá! Gostaria de saber mais sobre os workshops da Impulso Empreendedor.";
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    openWhatsApp();
   };
 
   return (

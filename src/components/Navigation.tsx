@@ -1,10 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
+import { openWhatsApp } from "@/utils/whatsapp";
+
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -26,6 +29,7 @@ export default function Navigation() {
     });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -35,7 +39,14 @@ export default function Navigation() {
     }
     setIsMenuOpen(false);
   };
-  return <nav className={`fixed top-0 left-0 right-0 z-50 p-6 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
+
+  const handleEnrollClick = () => {
+    openWhatsApp("Olá! Gostaria de me inscrever nos workshops da Impulso Empreendedor.");
+    setIsMenuOpen(false);
+  };
+
+  return (
+    <nav className={`fixed top-0 left-0 right-0 z-50 p-6 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between my-0 py-0">
           {/* Logo */}
@@ -64,7 +75,7 @@ export default function Navigation() {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button onClick={() => scrollToSection('courses')} className="bg-gradient-to-r from-cyan-500 to-green-500 hover:from-cyan-600 hover:to-green-600 text-black font-semibold border-0">
+            <Button onClick={handleEnrollClick} className="bg-gradient-to-r from-cyan-500 to-green-500 hover:from-cyan-600 hover:to-green-600 text-black font-semibold border-0">
               Inscreva-se Agora
             </Button>
           </div>
@@ -76,7 +87,8 @@ export default function Navigation() {
         </div>
 
         {/* Mobile Menu */}
-        {isMenuOpen && <div className="md:hidden mt-4 bg-black/20 backdrop-blur-md rounded-lg border border-white/20 p-4">
+        {isMenuOpen && (
+          <div className="md:hidden mt-4 bg-black/20 backdrop-blur-md rounded-lg border border-white/20 p-4">
             <div className="flex flex-col space-y-4">
               <button onClick={() => scrollToSection('home')} className="text-white/80 hover:text-cyan-300 transition-colors text-left">
                 Início
@@ -93,11 +105,13 @@ export default function Navigation() {
               <button onClick={() => scrollToSection('contact')} className="text-white/80 hover:text-cyan-300 transition-colors text-left">
                 Contato
               </button>
-              <Button onClick={() => scrollToSection('courses')} className="bg-gradient-to-r from-cyan-500 to-green-500 hover:from-cyan-600 hover:to-green-600 text-black font-semibold border-0 mt-4">
+              <Button onClick={handleEnrollClick} className="bg-gradient-to-r from-cyan-500 to-green-500 hover:from-cyan-600 hover:to-green-600 text-black font-semibold border-0 mt-4">
                 Inscreva-se Agora
               </Button>
             </div>
-          </div>}
+          </div>
+        )}
       </div>
-    </nav>;
+    </nav>
+  );
 }

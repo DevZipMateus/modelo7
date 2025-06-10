@@ -1,33 +1,16 @@
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { MapPin, Phone, Mail, Instagram, Facebook } from "lucide-react";
-import { useState } from "react";
+import { MapPin, Phone, Mail, Instagram, Facebook, MessageCircle } from "lucide-react";
+import { openWhatsApp } from "@/utils/whatsapp";
 
 export default function ContactSection() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: ''
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Aqui seria integrado com um serviço de email ou formulário
-    console.log('Formulário enviado:', formData);
-    // Reset form
-    setFormData({ name: '', email: '', phone: '', message: '' });
-    alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+  const handleContactClick = () => {
+    openWhatsApp("Olá! Gostaria de entrar em contato com a Impulso Empreendedor para tirar algumas dúvidas.");
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+  const handleQuestionClick = () => {
+    openWhatsApp("Olá! Tenho algumas dúvidas sobre os workshops da Impulso Empreendedor. Podem me ajudar?");
   };
 
   return (
@@ -51,62 +34,34 @@ export default function ContactSection() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
+          {/* WhatsApp Contact Card */}
           <Card className="bg-white/10 backdrop-blur-sm border-cyan-300/20 p-8">
-            <h3 className="text-2xl font-bold text-white mb-6">Envie sua Mensagem</h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-white/80 mb-2">Nome</label>
-                  <Input
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="bg-white/10 border-cyan-300/30 text-white placeholder:text-white/50"
-                    placeholder="Seu nome completo"
-                  />
-                </div>
-                <div>
-                  <label className="block text-white/80 mb-2">Telefone</label>
-                  <Input
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    className="bg-white/10 border-cyan-300/30 text-white placeholder:text-white/50"
-                    placeholder="(55) 99999-9999"
-                  />
-                </div>
+            <h3 className="text-2xl font-bold text-white mb-6">Fale Conosco no WhatsApp</h3>
+            <div className="space-y-6">
+              <div className="text-center">
+                <MessageCircle className="w-16 h-16 text-green-400 mx-auto mb-4" />
+                <p className="text-white/80 mb-6">
+                  A forma mais rápida de tirar suas dúvidas e se inscrever nos nossos workshops!
+                </p>
               </div>
-              <div>
-                <label className="block text-white/80 mb-2">E-mail</label>
-                <Input
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="bg-white/10 border-cyan-300/30 text-white placeholder:text-white/50"
-                  placeholder="seu@email.com"
-                />
+              
+              <div className="space-y-4">
+                <Button onClick={handleContactClick} className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold">
+                  <MessageCircle className="mr-2 w-4 h-4" />
+                  Entrar em Contato
+                </Button>
+                
+                <Button onClick={handleQuestionClick} className="w-full bg-gradient-to-r from-cyan-500 to-green-500 hover:from-cyan-600 hover:to-green-600 text-black font-semibold">
+                  <MessageCircle className="mr-2 w-4 h-4" />
+                  Tirar Dúvidas
+                </Button>
               </div>
-              <div>
-                <label className="block text-white/80 mb-2">Mensagem</label>
-                <Textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={4}
-                  className="bg-white/10 border-cyan-300/30 text-white placeholder:text-white/50"
-                  placeholder="Como podemos ajudar seu negócio?"
-                />
+
+              <div className="text-center text-white/70 text-sm">
+                <p>📱 Disponível de segunda a sábado</p>
+                <p>⚡ Resposta rápida garantida</p>
               </div>
-              <Button type="submit" className="w-full bg-gradient-to-r from-cyan-500 to-green-500 hover:from-cyan-600 hover:to-green-600 text-black font-semibold">
-                Enviar Mensagem
-              </Button>
-            </form>
+            </div>
           </Card>
 
           {/* Contact Info */}

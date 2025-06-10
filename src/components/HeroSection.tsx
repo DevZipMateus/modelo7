@@ -1,18 +1,16 @@
-
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, TrendingUp, Target, Users } from "lucide-react";
-
 export default function HeroSection() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({
+        behavior: 'smooth'
+      });
     }
   };
-
-  return (
-    <div id="home" className="relative z-10 min-h-screen flex items-center justify-center px-6">
+  return <div id="home" className="relative z-10 min-h-screen flex items-center justify-center px-6">
       <div className="max-w-6xl mx-auto text-center space-y-8">
         {/* Floating icons */}
         <div className="absolute inset-0 pointer-events-none">
@@ -43,21 +41,12 @@ export default function HeroSection() {
 
         {/* Action buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in">
-          <Button 
-            size="lg" 
-            onClick={() => scrollToSection('courses')}
-            className="bg-gradient-to-r from-cyan-500 to-green-500 hover:from-cyan-600 hover:to-green-600 text-black font-semibold transition-all duration-300 hover:scale-105"
-          >
+          <Button size="lg" onClick={() => scrollToSection('courses')} className="bg-gradient-to-r from-cyan-500 to-green-500 hover:from-cyan-600 hover:to-green-600 text-black font-semibold transition-all duration-300 hover:scale-105">
             Conheça Nossos Cursos
             <ArrowRight className="ml-2 w-4 h-4" />
           </Button>
           
-          <Button 
-            variant="outline" 
-            size="lg" 
-            onClick={() => scrollToSection('about')}
-            className="border-cyan-300/30 text-white hover:bg-cyan-300/10 backdrop-blur-sm transition-all duration-300"
-          >
+          <Button variant="outline" size="lg" onClick={() => scrollToSection('about')} className="border-cyan-300/30 hover:bg-cyan-300/10 backdrop-blur-sm transition-all duration-300 text-cyan-100">
             Saiba Mais
           </Button>
         </div>
@@ -83,6 +72,5 @@ export default function HeroSection() {
           </Card>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 }

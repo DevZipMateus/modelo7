@@ -46,7 +46,7 @@ export default function HeroSection() {
             <ArrowRight className="ml-2 w-4 h-4" />
           </Button>
           
-          <Button variant="outline" size="lg" onClick={() => scrollToSection('about')} className="border-cyan-300/30 hover:bg-cyan-300/10 backdrop-blur-sm transition-all duration-300 text-cyan-100">
+          <Button variant="outline" size="lg" onClick={() => scrollToSection('about')} className="border-cyan-300/30 backdrop-blur-sm transition-all duration-300 text-cyan-100 bg-transparent">
             Saiba Mais
           </Button>
         </div>

@@ -10,7 +10,7 @@ export default function HeroSection() {
       });
     }
   };
-  return <div id="home" className="relative z-10 min-h-screen flex items-center justify-center px-6">
+  return <div id="home" className="relative z-10 min-h-screen flex items-center justify-center px-[8px] py-[57px]">
       <div className="max-w-6xl mx-auto text-center space-y-8">
         {/* Floating icons */}
         <div className="absolute inset-0 pointer-events-none">

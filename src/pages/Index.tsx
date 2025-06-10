@@ -2,6 +2,11 @@
 import Aurora from "@/components/Aurora";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
+import CoursesSection from "@/components/CoursesSection";
+import ImpactSection from "@/components/ImpactSection";
+import AboutSection from "@/components/AboutSection";
+import ContactSection from "@/components/ContactSection";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const Index = () => {
   return (
@@ -24,6 +29,13 @@ const Index = () => {
 
       {/* Main Content */}
       <HeroSection />
+      <CoursesSection />
+      <ImpactSection />
+      <AboutSection />
+      <ContactSection />
+
+      {/* WhatsApp Button */}
+      <WhatsAppButton />
     </div>
   );
 };

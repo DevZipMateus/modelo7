@@ -10,7 +10,7 @@ export default function WhatsAppButton() {
   return (
     <Button
       onClick={handleWhatsAppClick}
-      className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white rounded-full w-16 h-16 shadow-lg transition-transform duration-200 hover:scale-110 will-change-transform"
+      className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white rounded-full w-16 h-16 shadow-lg"
       size="icon"
     >
       <svg

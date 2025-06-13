@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, TrendingUp, Target, Users } from "lucide-react";
@@ -21,17 +22,18 @@ export default function HeroSection() {
     openWhatsApp("Olá! Gostaria de saber mais sobre a Impulso Empreendedor e seus workshops.");
   };
 
-  return <div id="home" className="relative z-10 min-h-screen flex items-center justify-center px-[8px] py-[57px]">
+  return (
+    <div id="home" className="relative z-10 min-h-screen flex items-center justify-center px-[8px] py-[57px]">
       <div className="max-w-6xl mx-auto text-center space-y-8">
-        {/* Floating icons */}
+        {/* Optimized floating icons - reduced animations */}
         <div className="absolute inset-0 pointer-events-none">
-          <TrendingUp className="absolute top-20 left-10 w-6 h-6 text-cyan-300/60 animate-pulse" />
-          <Target className="absolute top-32 right-20 w-8 h-8 text-green-300/60 animate-bounce" />
-          <Users className="absolute bottom-40 left-20 w-7 h-7 text-cyan-300/60 animate-pulse" />
-          <TrendingUp className="absolute bottom-20 right-10 w-5 h-5 text-green-300/60 animate-bounce" />
+          <TrendingUp className="absolute top-20 left-10 w-6 h-6 text-cyan-300/60 opacity-75 will-change-transform" style={{ animation: 'pulse 3s ease-in-out infinite' }} />
+          <Target className="absolute top-32 right-20 w-8 h-8 text-green-300/60 opacity-75 will-change-transform" style={{ animation: 'bounce 4s ease-in-out infinite' }} />
+          <Users className="absolute bottom-40 left-20 w-7 h-7 text-cyan-300/60 opacity-75 will-change-transform" style={{ animation: 'pulse 3.5s ease-in-out infinite' }} />
+          <TrendingUp className="absolute bottom-20 right-10 w-5 h-5 text-green-300/60 opacity-75 will-change-transform" style={{ animation: 'bounce 4.5s ease-in-out infinite' }} />
         </div>
 
-        {/* Main content */}
+        {/* Main content with optimized animations */}
         <div className="space-y-6 animate-fade-in">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-cyan-300/30">
             <TrendingUp className="w-4 h-4 mr-2 text-cyan-300" />
@@ -50,38 +52,48 @@ export default function HeroSection() {
           </p>
         </div>
 
-        {/* Action buttons */}
+        {/* Optimized action buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in">
-          <Button size="lg" onClick={handleCoursesClick} className="bg-gradient-to-r from-cyan-500 to-green-500 hover:from-cyan-600 hover:to-green-600 text-black font-semibold transition-all duration-300 hover:scale-105">
+          <Button 
+            size="lg" 
+            onClick={handleCoursesClick} 
+            className="bg-gradient-to-r from-cyan-500 to-green-500 hover:from-cyan-600 hover:to-green-600 text-black font-semibold transition-transform duration-200 hover:scale-105 will-change-transform"
+          >
             Conheça Nossos Cursos
             <ArrowRight className="ml-2 w-4 h-4" />
           </Button>
           
-          <Button variant="outline" size="lg" onClick={handleLearnMoreClick} className="border-cyan-300/30 backdrop-blur-sm transition-all duration-300 text-cyan-100 bg-transparent">
+          <Button 
+            variant="outline" 
+            size="lg" 
+            onClick={handleLearnMoreClick} 
+            className="border-cyan-300/30 backdrop-blur-sm transition-transform duration-200 text-cyan-100 bg-transparent hover:scale-105 will-change-transform"
+          >
             Saiba Mais
           </Button>
         </div>
 
-        {/* Feature cards */}
+        {/* Optimized feature cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 animate-fade-in">
-          <Card className="bg-white/10 backdrop-blur-sm border-cyan-300/20 p-6 hover:bg-white/15 transition-all duration-300 hover:scale-105">
+          <Card className="bg-white/10 backdrop-blur-sm border-cyan-300/20 p-6 hover:bg-white/15 transition-all duration-200 hover:scale-105 will-change-transform">
             <Target className="w-8 h-8 text-cyan-300 mb-4" />
             <h3 className="text-lg font-semibold text-white mb-2">Foco no MEI</h3>
             <p className="text-white/70">Conteúdo específico para microempreendedores individuais e pequenos negócios</p>
           </Card>
           
-          <Card className="bg-white/10 backdrop-blur-sm border-cyan-300/20 p-6 hover:bg-white/15 transition-all duration-300 hover:scale-105">
+          <Card className="bg-white/10 backdrop-blur-sm border-cyan-300/20 p-6 hover:bg-white/15 transition-all duration-200 hover:scale-105 will-change-transform">
             <TrendingUp className="w-8 h-8 text-green-300 mb-4" />
             <h3 className="text-lg font-semibold text-white mb-2">Crescimento Real</h3>
             <p className="text-white/70">Estratégias comprovadas que geram resultados práticos para seu negócio</p>
           </Card>
           
-          <Card className="bg-white/10 backdrop-blur-sm border-cyan-300/20 p-6 hover:bg-white/15 transition-all duration-300 hover:scale-105">
+          <Card className="bg-white/10 backdrop-blur-sm border-cyan-300/20 p-6 hover:bg-white/15 transition-all duration-200 hover:scale-105 will-change-transform">
             <Users className="w-8 h-8 text-cyan-300 mb-4" />
             <h3 className="text-lg font-semibold text-white mb-2">Comunidade Local</h3>
             <p className="text-white/70">Conecte-se com outros empreendedores de Santa Maria e região</p>
           </Card>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 }
